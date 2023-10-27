@@ -32,11 +32,8 @@ export default {
     //   });
     // },
     addToCart() {
-      this.$store.dispatch('addProductToCart', {
+      this.$store.dispatch('cart/addToCart', {
         id: this.id,
-        image: this.image,
-        title: this.title,
-        price: this.price,
       });
     },
   },

@@ -9,7 +9,7 @@ export default {
   },
   mutations: {
     addProductToCart(state, payload) {
-      const productData = payload.products;
+      const productData = payload;
       const productInCartIndex = state.items.findIndex(
         (ci) => ci.productId === productData.id
       );
@@ -43,10 +43,13 @@ export default {
     },
   },
   actions: {
-    addProductToCart(context, payload) {
-      context.commit('addProductToCart', payload);
+    addToCart(context, payload) {
+      const prodId = payload.id;
+      const products = context.rootGetters['prods/products'];
+      const product = products.find((prod) => prod.id === prodId);
+      context.commit('addProductToCart', product);
     },
-    removeProductFromCart(context, payload) {
+    removeFromCart(context, payload) {
       context.commit('removeProductFromCart', payload);
     },
   },
